@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./UsersList.module.css";
-import Card from "./UI/Card";
+import Card from "../UI/Card";
 
 export default function UsersList({ users, setUsers }) {
   return (
@@ -9,7 +9,7 @@ export default function UsersList({ users, setUsers }) {
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            {user.name} ({user.age} years old)  
+            {user.name} ({user.age} years old)
           </li>
         ))}
       </ul>
