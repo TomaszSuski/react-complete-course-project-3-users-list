@@ -4,7 +4,13 @@ import styles from "./Button.module.css";
 
 export default function Button({ className, onClick, type, children }) {
   return (
-    <button className={`${styles.button} ${className}`}>{children}</button>
+    <button
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
+    </button>
   );
 }
 

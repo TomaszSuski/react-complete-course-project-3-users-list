@@ -6,10 +6,10 @@ function App() {
   const [users, setUsers] = useState([]);
   console.log(users);
   return (
-    <div>
+    <>
       <AddUser addUsers={setUsers} users={users} />
       <UsersList users={users} setUsers={setUsers} />
-    </div>
+    </>
   );
 }
 
