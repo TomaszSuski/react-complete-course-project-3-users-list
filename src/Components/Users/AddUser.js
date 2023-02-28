@@ -6,7 +6,10 @@ import Button from "../UI/Button";
 
 export default function AddUser({ addUsers, users }) {
   const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState();
+  const [userAge, setUserAge] = useState('');
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isAgeValid, setIsAgeValid] = useState(true);
+
   const userNameChangeHandler = (event) => {
     setUserName(event.target.value);
   };
@@ -15,15 +18,29 @@ export default function AddUser({ addUsers, users }) {
   };
   const addUserHandler = (event) => {
     event.preventDefault();
-    let newUser = {
-      name: userName,
-      age: userAge,
-      id: Math.random() + userName + userAge,
-    };
-    let newUsers = [newUser, ...users];
-    addUsers(newUsers);
-    setUserName("");
-    setUserAge("");
+    switch (true) {
+      case userName.trim().length === 0:
+        setIsNameValid(false);
+        alert("User name not entered");
+        break;
+      case userAge.trim().length === 0:
+        setIsAgeValid(false);
+        alert("User age not entered");
+        break;
+      case userAge <= 0:
+        alert("User age must be more than zero");
+        break;
+      default:
+        let newUser = {
+          name: userName,
+          age: userAge,
+          id: Math.random() + userName + userAge,
+        };
+        let newUsers = [newUser, ...users];
+        addUsers(newUsers);
+        setUserName("");
+        setUserAge("");
+    }
   };
   return (
     <Card className={styles.input}>
