@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <AddUser addUsers={setUsers} users={users} />
-      <UsersList />
+      <UsersList users={users} setUsers={setUsers}/>
     </div>
   );
 }
